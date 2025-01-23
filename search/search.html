@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/cart.js" defer></script>
+    <script src="../js/product.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>🧩 Green Shop</title>
+
+
+</head>
+
+<body>
+    <!-- Navbar start -->
+    <div class="nav-main">
+        <div class="logo">
+            <a href="../home.html">
+                <h1><span>Green</span>Shop</h1>
+            </a>
+        </div>
+
+    
+        <div class="searchBar">
+            <input id="searchInput" type="text" placeholder="Search products & brands">
+            <button class="black-btn" onclick="searchProducts()">
+                <img src="https://img.icons8.com/material-outlined/24/ffffff/search.png"
+                    style="width: 20px; padding-right: 10px;" />Search
+            </button>
+        </div>
+
+
+        <div class="profile">
+            <a href="../profile/register.html">
+                <i class="fa-regular fa-address-card"></i>
+                <h6>Register</h6>
+            </a>
+        </div>
+
+        <div class="profile">
+            <a href="../profile/login.html">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <h6>Login</h6>
+            </a>
+        </div>
+
+        <div class="profile">
+            <a href="../profile/profile.html">
+                <i class="fa-regular fa-user"></i>
+                <h6>Profile</h6>
+            </a>
+        </div>
+        <div class="profile">
+            <a href="../order/order_history.html">
+                <i class="fa-regular fa-shop"></i>
+                <h6>Your Orders</h6>
+            </a>
+        </div>
+        <div class="Cart">
+            <a href="../cart/cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h6>Cart</h6>
+            </a>
+        </div>
+    </div>
+
+    <div id="slideshow">
+
+    </div>
+
+    <!-- ===================== -->
+    <!--    Features Section   -->
+    <!-- ===================== -->
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="../img/features/f1.png" alt="">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../img/features/f2.png" alt="">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../img/features/f3.png" alt="">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../img/features/f4.png" alt="">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../img/features/f5.png" alt="">
+            <h6>xHappy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="../img/features/f6.png" alt="">
+            <h6>F24/7 Support</h6>
+        </div>
+    </section>
+    <!-- ===================== -->
+    <!--    Products Section   -->
+    <!-- ===================== -->
+    <section id="product1" class="section-p1">
+        <h2>Future Past Products</h2>
+        <p class="heading">Trending Cultural Design All</p>
+        <div class="pro-container">
+            <div class="pro" onclick="window.location.href='../prod_detail/1card.html';">
+                <img src=" ../img/products/RAMRAJ.jpg" alt="">
+                <div class="des">
+                    <span>Indian Cultural</span>
+                    <h5>RAMRAJ DHOTIES</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <h4>₹500</h4>
+                    <a href="../cart/cart.html" onclick="add(0)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/2card.html';">
+                <img src="../img/products/Miraa.jpg" alt="">
+                <div class="des">
+                    <span>New</span>
+                    <h5>Chudidar</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <h4>₹450</h4>
+                    <a href="../cart/cart.html" onclick="add(1)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/3card.html';">
+                <img src="../img/products/PATPAT.jpg" alt="">
+                <div class="des">
+                    <span>Summer</span>
+                    <h5>FAMILY DRESS</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹650</h4>
+                    <a href="../cart/cart.html" onclick="add(2)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/4card.html';">
+                <img src="../img/products/Blazer.jpg" alt="">
+                <div class="des">
+                    <span>Profession</span>
+                    <h5>SUIT</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹5000</h4>
+                    <a href="../cart/cart.html" onclick="add(3)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/5card.html';">
+                <img src="../img/products/Peter.jpg" alt="">
+                <div class="des">
+                    <span>Profession</span>
+                    <h5>COAT SUIT</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹4500</h4>
+                    <a href="../cart/cart.html" onclick="add(4)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/6card.html';">
+                <img src="../img/products/Independent.jpg" alt="">
+                <div class="des">
+                    <span>Independence</span>
+                    <h5>FANCY DRESS</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <h4>₹1500</h4>
+                    <a href="../cart/cart.html" onclick="add(5)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/7card.html';">
+                <img src="../img/products/Printed.jpg" alt="">
+                <div class="des">
+                    <span>Winter</span>
+                    <h5>FANTASY DRESS</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹3000</h4>
+                    <a href="../cart/cart.html" onclick="add(6)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro" onclick="window.location.href='../prod_detail/8card.html';">
+                <img src="../img/products/Couple Dress.jpg" alt="">
+                <div class="des">
+                    <span>Celebrate</span>
+                    <h5>Couple Dress</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹2550</h4>
+                    <a href="../cart/cart.html" onclick="add(7)"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===================== -->
+    <!--    Products Section   -->
+    <!-- ===================== -->
+    <section id="banner" class="section-m1">
+        <h4>Repair Services</h4>
+        <h2>Up to <span>70% off</span> - All T-shirts & Accessories</h2>
+        <button class="normal">Explore More</button>
+    </section>
+    <!-- ===================== -->
+    <!--    New Arrivals   -->
+    <!-- ===================== -->
+    <section id="product1" class="section-p1">
+        <h2>Features</h2>
+        <p class="heading">Summer Collection New Modern Design</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="../img/products/LEWEL.jpg" alt="">
+                <div class="des">
+                    <span>H&M</span>
+                    <h5>Regular Fit shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹350</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/MIRCHI.jpg" alt="">
+                <div class="des">
+                    <span>LC WAIKIKI</span>
+                    <h5>Classic Green Saree </h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹950</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/Denim.jpg" alt="">
+                <div class="des">
+                    <span>H&M</span>
+                    <h5>DENIM Stylish</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <h4>₹800</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/Rigo.jpg" alt="">
+                <div class="des">
+                    <span>POLO</span>
+                    <h5>Sports Dress</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹700</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/Hair Bands.jpg" alt="">
+                <div class="des">
+                    <span>H&M</span>
+                    <h5>Bands</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <h4>₹550</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/Rain Coat.jpg" alt="">
+                <div class="des">
+                    <span>LC WAIKIKI</span>
+                    <h5>RAIN COAT</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹1000</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/Boys.jpg" alt="">
+                <div class="des">
+                    <span>Boys</span>
+                    <h5>Regular Fit Linen-blend overshirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹750</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../img/products/Anarkali.jpg" alt="">
+                <div class="des">
+                    <span>Anarkali</span>
+                    <h5>Chudidar</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                    <h4>₹900</h4>
+                    <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!--    Banner 2   -->
+    <!-- ===================== -->
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <div class="overlay"></div>
+            <div class="banner-content content">
+                <h4>Crazy Deals</h4>
+                <h2>Buy 1 Get 1 Free</h2>
+                <span>The best classic dress is on sale at cara</span>
+                <button class="white">Learn More</button>
+            </div>
+        </div>
+        <div class="banner-box">
+            <div class="overlay"></div>
+            <div class="banner-content content">
+                <h4>Spring/Summer </h4>
+                <h2>Upcoming Season</h2>
+                <span>The best classic dress is on sale at cara</span>
+                <button class="white">Collection</button>
+            </div>
+        </div>
+    </section>
+    <section id="banner3" class="section-p1">
+        <div class="banner-box">
+            <div class="overlay"></div>
+            <div class="content">
+                <h2> Seasonal Sale</h2>
+                <h3>Winter Collection 50% Off</h3>
+            </div>
+
+        </div>
+        <div class="banner-box">
+            <div class="overlay"></div>
+            <div class="content">
+                <h2> Elegant Collection</h2>
+                <h3>Elegant collection with special prices</h3>
+            </div>
+        </div>
+        <div class="banner-box">
+            <div class="overlay"></div>
+            <div class="content">
+                <h2>New Women Collection</h2>
+                <h3>New Summer Collection For Women </h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== -->
+    <!-----       Footer -------->
+    <!-- ===================== -->
+    <footer class="section-p1">
+        <div class="col">
+          <div class="logo">
+            <h1><span>Green</span>Shop</h1>
+          </div>
+          <h4>Contact</h4>
+          <p><Strong>Adress:</Strong> Ismailia,Egypt </p>
+          <p><Strong>Phone:</Strong> 0101010101010 </p>
+          <p><Strong>Hours:</Strong> 10:00am -11:00pm, Sat -Thu </p>
+          <div class="icon follow">
+            <h4>Follow US</h4>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-pinterest-p"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+        </div>
+        <div class="col">
+          <h4>About</h4>
+          <a href="#">About Us</a>
+          <a href="#">Delivery Information</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+          <h4>My Account</h4>
+          <a href="#">Sign In</a>
+          <a href="#">View Cart</a>
+          <a href="#">My Wishlist</a>
+          <a href="#">Track My Order</a>
+          <a href="#">Help</a>
+        </div>
+        <div class="col install">
+          <h4>Install App</h4>
+          <p>From App Store or Google Play</p>
+          <div class="row">
+            <img src="../img/pay/app.jpg" alt="">
+            <img src="../img/pay/play.jpg" alt="">
+          </div>
+          <p>Secured Payment Gateways</p>
+          <img src="../img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+          <p>&copy; 2024, Green Shop Pvt Ltd </p>
+        </div>
+      </footer>
+    <!-- ============================================================================================================ -->
+
+</body>
+
+</html>
+<script>
+    
+//Data
+let slideshow_images = [
+    {
+        image: "../img/banner/E.jpg",
+    },
+    {
+        image: "../img/banner/G.jpg",
+    },
+    {
+        image: "../img/banner/N.jpg",
+    },
+    {
+        image: "../img/banner/H.jpg",
+    },
+    {
+        image: "../img/banner/U.jpg",
+    }
+];
+
+
+
+function showSlideShow() {
+    let img = document.createElement("img");
+    let counter = 0;
+    img.src = slideshow_images[counter].image;
+    counter++;
+    let div = document.getElementById("slideshow");
+    div.append(img);
+    setInterval(() => {
+
+        if (counter == slideshow_images.length) {
+            counter = 0;
+        }
+        img.src = slideshow_images[counter].image;
+        div.append(img);
+        counter++;
+    }, 4000);
+}
+
+showSlideShow();
+
+
+
+// Function to search products
+function searchProducts() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const products = document.querySelectorAll('.pro');
+
+    products.forEach(product => {
+        const title = product.querySelector('h5').textContent.toLowerCase();
+        if (title.includes(query)) {
+            product.style.display = 'block'; // Show product
+        } else {
+            product.style.display = 'none';  // Hide product
+
+        }
+    });
+
+}
+
+
+
+
+
+</script>
+<script src="../js/script.js"></script>
+<script src="../js/add.js"></script>

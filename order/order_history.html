@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History</title>
+    <style>
+        body {
+            background-color: #f4f8f7;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #004d00;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-item {
+            border-bottom: 1px solid #e2e9e1;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 15px;
+        }
+
+        .order-details {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-home {
+            background-color: #004d00;
+        }
+
+        .btn-home:hover {
+            background-color: #003300;
+        }
+
+        .btn-remove {
+            background-color: #d9534f;
+        }
+
+        .btn-remove:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Order History</h1>
+
+    <div class="container">
+        <div id="order-history">
+
+        </div>
+
+        <button class="btn btn-remove" onclick="removeOrderHistory()">Remove Order History</button>
+    </div>
+
+    <script>
+        function displayOrderHistory() {
+            const orderHistoryContainer = document.querySelector('#order-history');
+            const removeButton = document.querySelector('.btn-remove');
+            const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+
+            if (orderHistory.length > 0) {
+                orderHistoryContainer.innerHTML = orderHistory.map(order => `
+            <div class="order-item">
+                <h2>Order Date: ${order.date}</h2>
+                <div>
+                    ${order.items.map(item => `
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <img src="${item.prdimage}" alt="${item.prdname}">
+                            <div>
+                                <p class="order-details"><strong>Product:</strong> ${item.prdname}</p>
+                                <p class="order-details"><strong>Price:</strong> ${item.prdrate}</p>
+                                <p class="order-details"><strong>Quantity:</strong> ${item.quantity}</p>
+                                <p class="order-details"><strong>Total:</strong> ${(item.prdrate * item.quantity).toFixed(2)}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <p class="order-details"><strong>Subtotal:</strong> ${order.subtotal}</p>
+                <p class="order-details"><strong>Tax:</strong> ${order.tax}</p>
+                <p class="order-details"><strong>Total:</strong> ${order.total}</p>
+            </div>
+        `).join('');
+                removeButton.style.display = 'inline-block'; // Show remove button
+            } else {
+                orderHistoryContainer.innerHTML = '<p>No order history available.</p>';
+                removeButton.style.display = 'none'; // Hide remove button
+            }
+        }
+
+        function removeOrderHistory() {
+            localStorage.removeItem('orderHistory');
+            displayOrderHistory();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayOrderHistory();
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        /* Container Styling */
+        .reg-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e6e9ed;
+        }
+
+        /* Main Form Styling */
+        .reg-main {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .reg-h2 {
+            font-family: 'Lobster', cursive;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .input-box input:invalid {
+            border-color: red;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .popup-content p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Register form start-->
+    <div class="reg-container">
+        <div class="reg-main">
+            <h2 class="reg-h2">Sign Up</h2>
+            <div class="reg-form">
+                <div class="input-box">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="Enter First Name" required>
+                </div>
+                <div class="input-box">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Enter Last Name" required>
+                </div>
+                <div class="input-box">
+                    <label for="mobileNo">Mobile No</label>
+                    <input type="text" id="mobileNo" placeholder="Enter Mobile No" required>
+                </div>
+                <div class="input-box">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter Your Email" required>
+                </div>
+                <div class="input-box">
+                    <label for="password">Enter Your Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="input-box">
+                    <input type="button" class="btn" value="Submit" onclick="validateForm()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Register form End-->
+
+    <!-- Success Popup -->
+    <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <h2>Registration Successful!</h2>
+            <p>Thank you for registering. You will be redirected to the login page shortly.</p>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Get input values
+            var firstName = document.getElementById('firstName').value.trim();
+            var lastName = document.getElementById('lastName').value.trim();
+            var mobileNo = document.getElementById('mobileNo').value.trim();
+            var dob = document.getElementById('dob').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var password = document.getElementById('password').value;
+
+            // Regular expressions for validation
+            var mobileRegex = /^\d{10}$/; // Validates 10 digit mobile number
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Validates email format
+
+            // Validation checks
+            if (firstName === "") {
+                alert("Please enter First Name");
+                return;
+            }
+            if (lastName === "") {
+                alert("Please enter Last Name");
+                return;
+            }
+            if (!mobileRegex.test(mobileNo)) {
+                alert("Please enter a valid Mobile No (10 digits)");
+                return;
+            }
+            if (dob === "") {
+                alert("Please enter Date of Birth");
+                return;
+            }
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid Email Address");
+                return;
+            }
+            if (password === "") {
+                alert("Please enter Password");
+                return;
+            }
+
+            // If all validations pass, show success popup and redirect
+            document.getElementById('success-popup').style.display = 'flex';
+
+            // Example: Storing in local storage
+            var userData = {
+                firstName: firstName,
+                lastName: lastName,
+                mobileNo: mobileNo,
+                dob: dob,
+                email: email,
+                password: password
+            };
+
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            // Automatically redirect to the login page after 2 seconds
+            setTimeout(function() {
+                window.location.href = 'login.html'; // Adjust to your login page URL
+            }, 2000); // 2 seconds delay before redirection
+        }
+    </script>
+
+</body>
+
+</html>

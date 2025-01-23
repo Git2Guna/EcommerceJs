@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/product.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Cart</title>
+
+    <style>
+
+
+        h1 {
+            text-align: center;
+            color: green;
+            margin: 10px 0;
+        }
+
+
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar start -->
+    <div class="nav-main">
+        <div class="logo">
+            <a href="../home.html">
+                <h1><span>Green</span>Shop</h1>
+            </a>
+        </div>
+
+        <div class="searchBar">
+            <input type="text/" placeholder="Search products & brands">
+            <button class="black-btn" onclick="filterProducts()"><img
+                    src="https://img.icons8.com/material-outlined/24/ffffff/search.png"
+                    style="width: 20px; padding-right: 10px;" />Search</button>
+        </div>
+
+        <!-- Dynamically display Register and Login -->
+        <div class="profile" id="registerLink">
+            <a href="../profile/register.html">
+                <i class="fa-regular fa-address-card"></i>
+                <h6>Register</h6>
+            </a>
+        </div>
+
+        <div class="profile" id="loginLink">
+            <a href="../profile/login.html">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <h6>Login</h6>
+            </a>
+        </div>
+
+        <!-- Dynamically display Profile -->
+        <div class="profile" id="profileLink" style="display: none;">
+            <a href="../profile/profile.html">
+                <i class="fa-regular fa-user"></i>
+                <h6>Profile</h6>
+            </a>
+        </div>
+
+        <div class="profile" id="orderLink">
+            <a href="../order/order_history.html">
+                <i class="fa-regular fa-shop"></i>
+                <h6>Your Orders</h6>
+            </a>
+        </div>
+        <div class="Cart">
+            <a href="../cart/cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h6>Cart</h6>
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+
+
+    <h1>Your Cart List</h1>
+
+    <section id="carttbl">
+        <table>
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+    </section>
+
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td><span id="cart-subtotal">₹0.00</span></td>
+            </tr>
+            <tr>
+                <td>Tax</td>
+                <td><span id="cart-tax">₹0.00</span></td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td><span id="cart-total">₹0.00</span></td>
+            </tr>
+        </table>
+        <div class="cart-buttons">
+            <button id="place-order-btn" onclick="placeOrder()">Place Order</button>
+            <button id="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+        <!-- ===================== -->
+    <!-----       Footer -------->
+    <!-- ===================== -->
+    <footer class="section-p1">
+        <div class="col">
+            <div class="logo">
+                <h1><span>Green</span>Shop</h1>
+            </div>
+            <h4>Contact</h4>
+            <p><Strong>Adress:</Strong> Ismailia,Egypt </p>
+            <p><Strong>Phone:</Strong> 0101010101010 </p>
+            <p><Strong>Hours:</Strong> 10:00am -11:00pm, Sat -Thu </p>
+            <div class="icon follow">
+                <h4>Follow US</h4>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-pinterest-p"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="../img/pay/app.jpg" alt="">
+                <img src="../img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="../img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024, Green Shop Pvt Ltd </p>
+        </div>
+    </footer>
+    <!-- ============================================================================================================ -->
+
+
+    <script src="../js/cart.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/bcb2c05d90.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/cart.js" defer></script>
+  <script src="../js/product.js" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Green Shop</title>
+
+
+</head>
+
+<body>
+    <!-- Navbar start -->
+    <nav class="nav-main">
+      <div class="logo">
+          <a href="../home.html" aria-label="Go to Home"><h1><span>Green</span>Shop</h1></a>
+      </div>
+
+      <div class="searchBar">
+          <input type="text" placeholder="Search products & brands" aria-label="Search products">
+          <button class="black-btn" aria-label="Search">
+              <img src="https://img.icons8.com/material-outlined/24/ffffff/search.png" alt="search icon" style="width: 20px; padding-right: 10px;" />
+              Search
+          </button>
+      </div>
+
+      <div class="profile">
+          <a href="../profile/register.html" aria-label="Register">
+              <i class="fa-regular fa-address-card"></i>
+              <h6>Register</h6>
+          </a>
+      </div>
+
+      <div class="profile">
+          <a href="../profile/login.html" aria-label="Login">
+              <i class="fa-solid fa-right-to-bracket"></i>
+              <h6>Login</h6>
+          </a>
+      </div>
+
+      <div class="profile">
+          <a href="../profile/profile.html" aria-label="Profile">
+              <i class="fa-regular fa-user"></i>
+              <h6>Profile</h6>
+          </a>
+      </div>
+
+      <div class="profile">
+          <a href="../order/order_history.html" aria-label="Your Orders">
+              <i class="fa-regular fa-shop"></i>
+              <h6>Your Orders</h6>
+          </a>
+      </div>
+
+      <div class="Cart">
+          <a href="../cart/cart.html">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <h6>Cart</h6>
+              <span id="cart-count" class="cart-count">0</span>
+          </a>
+      </div>
+  </nav>
+
+  <div id="customAlert" aria-live="assertive">
+      <span id="alertMessage"></span>
+  </div>
+  <!-- ===================== -->
+  <!--   Prodetails Section    -->
+  <!-- ===================== -->
+  <section id="prodetails" class="section-p1">
+    <div class="single-pro-image">
+      <img src="../img/products/Miraa.jpg" width="100%" id="MainImg" alt="" />
+
+      <div class="small-img-group">
+        <div class="small-img-col">
+          <img src="../img/products/M2.jpg" width="100%" class="small-img" alt="" />
+        </div>
+        <div class="small-img-col">
+          <img src="../img/products/M3.jpg" width="100%" class="small-img" alt="" />
+        </div>
+        <div class="small-img-col">
+          <img src="../img/products/Miraa.jpg" width="100%" class="small-img" alt="" />
+        </div>
+        <div class="small-img-col">
+          <img src="../img/products/M4.jpg" width="100%" class="small-img" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <div class="single-pro-details">
+
+      <h4>Chudidar</h4>
+      <h2>₹450</h2>
+
+      <button onclick="add(1)" class="normal">Add To cart</button>
+      <h4>Product Details</h4>
+      <span>The Gildan Ultra Cotton Shirt is made from a substontial 6.0 oz. per
+        sq. yd. fabric constructed from 100% cotton. This classic fit
+        preshrunk jersey knit provides unmatched comfort with each wear.
+        Featuring a toped neck and shoulder, and a seemless double-needle
+        collar, and available in a range of colors, it offers it all in the
+        ultimate head- turning package.</span>
+    </div>
+  </section>
+
+  <section id="product1" class="section-p1">
+    <h2>Featured Products</h2>
+    <p class="heading">Summer Collection New Modern Design</p>
+    <div class="pro-container">
+      <div class="pro">
+        <img src="../img/products/Hair Bands.jpg" alt="">
+        <div class="des">
+          <span>H&M</span>
+          <h5>Bands</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <h4>₹550</h4>
+          <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+        </div>
+      </div>
+      <div class="pro">
+        <img src="../img/products/Rain Coat.jpg" alt="">
+        <div class="des">
+          <span>LC WAIKIKI</span>
+          <h5>RAIN COAT</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <h4>₹1000</h4>
+          <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+        </div>
+      </div>
+      <div class="pro">
+        <img src="../img/products/Boys.jpg" alt="">
+        <div class="des">
+          <span>Boys</span>
+          <h5>Regular Fit Linen-blend overshirt</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <h4>₹750</h4>
+          <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+        </div>
+      </div>
+      <div class="pro">
+        <img src="../img/products/Anarkali.jpg" alt="">
+        <div class="des">
+          <span>Anarkali</span>
+          <h5>Chudidar</h5>
+          <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </div>
+          <h4>₹900</h4>
+          <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================== -->
+  <!-----       Footer -------->
+  <!-- ===================== -->
+  <footer class="section-p1">
+    <div class="col">
+      <div class="logo">
+        <h1><span>Green</span>Shop</h1>
+      </div>
+      <h4>Contact</h4>
+      <p><Strong>Adress:</Strong> Ismailia,Egypt </p>
+      <p><Strong>Phone:</Strong> 0101010101010 </p>
+      <p><Strong>Hours:</Strong> 10:00am -11:00pm, Sat -Thu </p>
+      <div class="icon follow">
+        <h4>Follow US</h4>
+        <i class="fab fa-facebook-f"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-pinterest-p"></i>
+        <i class="fab fa-youtube"></i>
+      </div>
+    </div>
+    <div class="col">
+      <h4>About</h4>
+      <a href="#">About Us</a>
+      <a href="#">Delivery Information</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Contact Us</a>
+    </div>
+    <div class="col">
+      <h4>My Account</h4>
+      <a href="#">Sign In</a>
+      <a href="#">View Cart</a>
+      <a href="#">My Wishlist</a>
+      <a href="#">Track My Order</a>
+      <a href="#">Help</a>
+    </div>
+    <div class="col install">
+      <h4>Install App</h4>
+      <p>From App Store or Google Play</p>
+      <div class="row">
+        <img src="../img/pay/app.jpg" alt="">
+        <img src="../img/pay/play.jpg" alt="">
+      </div>
+      <p>Secured Payment Gateways</p>
+      <img src="../img/pay/pay.png" alt="">
+    </div>
+    <div class="copyright">
+      <p>&copy; 2024, Green Shop Pvt Ltd </p>
+    </div>
+  </footer>
+  <!-- ============================================================================================================ -->
+
+  <!-- ===================== -->
+  <!-----     Replacing images  -------->
+  <!-- ===================== -->
+
+  <script>
+    var MainImg = document.getElementById("MainImg");
+    var smallimg = document.getElementsByClassName("small-img");
+
+    smallimg[0].onclick = function () {
+      MainImg.src = smallimg[0].src;
+    };
+    smallimg[1].onclick = function () {
+      MainImg.src = smallimg[1].src;
+    };
+
+    smallimg[2].onclick = function () {
+      MainImg.src = smallimg[2].src;
+    };
+
+    smallimg[3].onclick = function () {
+      MainImg.src = smallimg[3].src;
+    };
+  </script>
+  <!-- ============================================================================================================ -->
+  <script src="../js/add.js"></script>
+</body>
+
+</html>

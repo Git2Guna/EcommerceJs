@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+    <style>
+        body {
+            background-color: #f4f8f7;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #004d00;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #ordertbl {
+            width: 750px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #ordertbl table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #ordertbl th, #ordertbl td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #e2e9e1;
+        }
+
+        #ordertbl th {
+            background-color: lightgreen;
+            color: #ffffff;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        #ordertbl img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .item-name {
+            color: #004d00;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .item-price, .item-total {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .quantity-input {
+            border: 1px solid #b0b0b0;
+            width: 50px;
+            font-size: 16px;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .summary {
+            width: 750px;
+            margin: 20px auto;
+            text-align: right;
+        }
+
+        .summary p {
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #back-to-cart-btn,
+        #confirm-order-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        #back-to-cart-btn {
+            background-color: burlywood;
+        }
+
+        #confirm-order-btn {
+            background-color: #004d00;
+        }
+
+        #back-to-cart-btn:hover {
+            background-color: #5a6268;
+        }
+
+        #confirm-order-btn:hover {
+            background-color: #003300;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 10px;
+            color: #004d00;
+        }
+
+        .popup-content p {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            background-color: #004d00;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .popup-content button:hover {
+            background-color: #003300;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Place Your Order</h1>
+
+    <div id="ordertbl">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="order-items"></tbody>
+        </table>
+    </div>
+    
+    <div class="summary">
+        <p>Subtotal: <span id="order-subtotal">₹0.00</span></p>
+        <p>Tax: <span id="order-tax">₹0.00</span></p>
+        <p>Total: <span id="order-total">₹0.00</span></p>
+    </div>
+
+    <a href="../cart/cart.html" id="back-to-cart-btn">Back to Cart</a>
+    <a href="#" id="confirm-order-btn">Confirm Order</a>
+
+    <!-- Popup HTML -->
+    <div id="success-popup" class="popup">
+        <div class="popup-content">
+            <h2>Purchase Successful!</h2>
+            <p>Thank you for your order</p>
+            <button onclick="redirectHome()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const TAX_RATE = 0.18; // Tax rate (e.g., 18%)
+
+        function renderOrderItems() {
+            const orderItemsContainer = document.querySelector('#order-items');
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            orderItemsContainer.innerHTML = '';
+            cart.forEach((item, index) => {
+                const orderItem = document.createElement('tr');
+                orderItem.innerHTML = `
+                    <td><img src="${item.prdimage}" alt="${item.prdname}"></td>
+                    <td class="item-name">${item.prdname}</td>
+                    <td class="item-price">${item.prdrate}</td>
+                    <td><input type="text" class="quantity-input" id="quantity-${index}" value="${item.quantity || 1}" readonly></td>
+                    <td class="item-total" id="total-${index}">${(item.prdrate * (item.quantity || 1)).toFixed(2)}</td>
+                `;
+                orderItemsContainer.appendChild(orderItem);
+            });
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                const quantity = parseInt(document.querySelector(`#quantity-${index}`).value);
+                subtotal += item.prdrate * quantity;
+            });
+
+            const tax = subtotal * TAX_RATE;
+            const total = subtotal + tax;
+
+            document.querySelector('#order-subtotal').textContent = `₹${subtotal.toFixed(2)}`;
+            document.querySelector('#order-tax').textContent = `₹${tax.toFixed(2)}`;
+            document.querySelector('#order-total').textContent = `₹${total.toFixed(2)}`;
+        }
+
+        function confirmOrder() {
+            // Display the success popup
+            document.querySelector('#success-popup').style.display = 'flex';
+
+            // Save order history
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderHistory = JSON.parse(localStorage.getItem('orderHistory')) || [];
+            orderHistory.push({
+                items: cart,
+                subtotal: document.querySelector('#order-subtotal').textContent,
+                tax: document.querySelector('#order-tax').textContent,
+                total: document.querySelector('#order-total').textContent,
+                date: new Date().toLocaleString()
+            });
+            localStorage.setItem('orderHistory', JSON.stringify(orderHistory));
+
+            // Clear the cart
+            localStorage.removeItem('cart');
+
+            // Redirect to the purchase complete page after a short delay
+            setTimeout(() => {
+                window.location.href = 'order_complete.html';
+            }, 1000); // Delay to allow the popup to be seen
+        }
+
+        function redirectHome() {
+            // Redirect to the home page
+            window.location.href = 'order_complete.html'; // Adjust to your home page URL
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderOrderItems();
+            document.querySelector('#confirm-order-btn').addEventListener('click', confirmOrder);
+        });
+    </script>
+
+</body>
+
+</html>

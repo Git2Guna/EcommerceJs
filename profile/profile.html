@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/cart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+        }
+
+        .profil-main {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-container {
+            text-align: center;
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .profile-details {
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .profile-details td,
+        .profile-details th {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .profile-details th {
+            background-color: lightgreen;
+            color: white;
+        }
+
+        .profile-details tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .out {
+            background-color: blue;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-left: 200px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .popup-content p {
+            margin-bottom: 20px;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .popup-content button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar start -->
+    <div class="nav-main">
+        <div class="logo">
+            <a href="../home.html">
+                <h1><span>Green</span>Shop</h1>
+            </a>
+        </div>
+
+        <div class="searchBar">
+            <input type="text/" placeholder="Search products & brands">
+            <button class="black-btn" onclick="filterProducts()"><img
+                    src="https://img.icons8.com/material-outlined/24/ffffff/search.png"
+                    style="width: 20px; padding-right: 10px;" />Search</button>
+        </div>
+
+        <!-- Dynamically display Register and Login -->
+        <div class="profile" id="registerLink">
+            <a href="../profile/register.html">
+                <i class="fa-regular fa-address-card"></i>
+                <h6>Register</h6>
+            </a>
+        </div>
+
+        <div class="profile" id="loginLink">
+            <a href="../profile/login.html">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <h6>Login</h6>
+            </a>
+        </div>
+
+        <!-- Dynamically display Profile -->
+        <div class="profile" id="profileLink" style="display: none;">
+            <a href="../profile/profile.html">
+                <i class="fa-regular fa-user"></i>
+                <h6>Profile</h6>
+            </a>
+        </div>
+
+        <div class="profile" id="orderLink">
+            <a href="../order/order_history.html">
+                <i class="fa-regular fa-shop"></i>
+                <h6>Your Orders</h6>
+            </a>
+        </div>
+        <div class="Cart">
+            <a href="../cart/cart.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <h6>Cart</h6>
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="profil-main">
+        <!-- Profile Details Start -->
+        <div class="profile-container">
+            <h2>Your Profile Details</h2>
+            <table class="profile-details">
+                <tr>
+                    <th>Field</th>
+                    <th>Details</th>
+                </tr>
+                <tbody id="profileDetails"></tbody>
+            </table>
+            <!-- Logout button shown only in the profile page -->
+            <button id="logoutButton" class="out" onclick="showLogoutPopup()">Logout</button>
+        </div>
+        <!-- Profile Details End -->
+    </div>
+
+    <!-- Logout Confirmation Popup -->
+    <div id="logout-popup" class="popup">
+        <div class="popup-content">
+            <h2>Confirm Logout</h2>
+            <p>Are you sure you want to log out?</p>
+            <button onclick="confirmLogout()">Yes</button>
+            <button onclick="closePopup()">No</button>
+        </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-----       Footer -------->
+    <!-- ===================== -->
+    <footer class="section-p1">
+        <div class="col">
+            <div class="logo">
+                <h1><span>Green</span>Shop</h1>
+            </div>
+            <h4>Contact</h4>
+            <p><Strong>Adress:</Strong> Ismailia,Egypt </p>
+            <p><Strong>Phone:</Strong> 0101010101010 </p>
+            <p><Strong>Hours:</Strong> 10:00am -11:00pm, Sat -Thu </p>
+            <div class="icon follow">
+                <h4>Follow US</h4>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-pinterest-p"></i>
+                <i class="fab fa-youtube"></i>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="../img/pay/app.jpg" alt="">
+                <img src="../img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="../img/pay/pay.png" alt="">
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024, Green Shop Pvt Ltd </p>
+        </div>
+    </footer>
+    <!-- ============================================================================================================ -->
+
+
+    <script>
+        // Retrieve user data from local storage
+        var userData = JSON.parse(localStorage.getItem('userData'));
+
+        if (userData) {
+            var profileDetails = document.getElementById('profileDetails');
+            profileDetails.innerHTML = `
+                <tr>
+                    <td><strong>First Name:</strong></td>
+                    <td>${userData.firstName}</td>
+                </tr>
+                <tr>
+                    <td><strong>Last Name:</strong></td>
+                    <td>${userData.lastName}</td>
+                </tr>
+                <tr>
+                    <td><strong>Mobile No:</strong></td>
+                    <td>${userData.mobileNo}</td>
+                </tr>
+                <tr>
+                    <td><strong>Date of Birth:</strong></td>
+                    <td>${userData.dob}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>${userData.email}</td>
+                </tr>
+            `;
+
+            // Hide Register & Login, Show Profile
+            document.getElementById('registerLink').style.display = 'none';
+            document.getElementById('loginLink').style.display = 'none';
+            document.getElementById('profileLink').style.display = 'none';
+            document.getElementById('logoutButton').style.display = 'block'; // Show logout button on profile page
+        } else {
+            document.getElementById('profileDetails').innerHTML = "<tr><td colspan='2'>No profile details available. Please log in.</td></tr>";
+
+            // Show Register & Login, Hide Profile
+            document.getElementById('registerLink').style.display = 'block';
+            document.getElementById('loginLink').style.display = 'block';
+            document.getElementById('profileLink').style.display = 'none';
+            document.getElementById('orderLink').style.display = 'none';
+            document.getElementById('logoutButton').style.display = 'none'; // Hide logout button
+        }
+
+        function showLogoutPopup() {
+            document.getElementById('logout-popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('logout-popup').style.display = 'none';
+        }
+
+        function confirmLogout() {
+            localStorage.removeItem('userData');
+            window.location.href = '../home.html'; // Redirect to homepage after logout
+        }
+    </script>
+</body>
+
+</html>
